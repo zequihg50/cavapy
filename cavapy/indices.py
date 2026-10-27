@@ -53,10 +53,10 @@ def mean_and_trend(data, years):
 # Indices
 
 def prcptot(da):
-    return da.resample({"time": "YE"}).sum()
+    return da.groupby("time.year").sum().rename({"year": "time"})
 
 def dd(da):
-    dd = (da <= 1).resample({"time": "YE"}).sum()
+    dd = (da <= 1).groupby("time.year").sum().rename({"year": "time"})
     dd.attrs["units"] = "N° days"
 
     return dd
@@ -86,19 +86,19 @@ def cwd(da):
     return cwd
 
 def r20(da):
-    r20 = (da > 20).resample({"time": "YE"}).sum()
+    r20 = (da > 20).groupby("time.year").sum().rename({"year": "time"})
     r20.attrs["units"] = "N° days"
 
     return r20
 
 def su(da):
-    su = (da > 25).resample({"time": "YE"}).sum()
+    su = (da > 25).groupby("time.year").sum().rename({"year": "time"})
     su.attrs["units"] = "N° days"
 
     return su
 
 def tr(da):
-    tr = (da > 20).resample({"time": "YE"}).sum()
+    tr = (da > 20).groupby("time.year").sum().rename({"year": "time"})
     tr.attrs["units"] = "N° days"
 
     return tr
