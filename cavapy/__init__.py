@@ -16,6 +16,7 @@ from .cava_config import (
     VALID_RCPS,
     VALID_VARIABLES,
 )
+from . import indices
 
 __all__ = [
     "get_climate_data",
